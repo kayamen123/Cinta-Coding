@@ -39,7 +39,6 @@
   width: 70vw;
   justify-content: end;
   margin-right: 2rem;
-
 }
 
 .nav-links {
@@ -47,14 +46,25 @@
   text-decoration: none;
   padding: 0.5rem 2rem;
   background-color: blue;
-  border-radius: 20px;
+  border-radius: 0 !important;
+  cursor:pointer
 }
+
+.nav-links-active {
+  color: blue;
+  text-decoration: none;
+  padding: 0.5rem 2rem;
+  background-color: white;
+  border-radius: 0 !important;
+  cursor:pointer
+}
+
 
 .nav-links:hover {
   color: blue;
   background-color: white;
-  border-radius: 20px;
   transition: all 0.2s ease-out;
+  border-radius: 0;
 }
 
 .fa-bars {

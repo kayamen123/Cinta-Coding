@@ -1,36 +1,55 @@
-import React, { Component } from 'react';
-import { Button } from '../shared/Button';
+import React, { useEffect, useState } from 'react';
+import Dashboard from '../Dashboard/Dashboard';
 import {MenuItems} from "./MenuItems"
 import './Navbar.css'
 
-class Navbar extends Component {
-  state = {clicked: false}
-
-  handleClick = () => {
-   this.setState({ clicked: !this.state.clicked })
+function Navbar() {
+  const [click , setClicked] = useState({clicked: false})
+  const [validate , setValidate] = useState(false)
+  function handleClick() {
+    setClicked({clicked: !click.clicked})
   }
-  render() {
+
+    useEffect(() => {
+      const validated = JSON.parse(localStorage.getItem('validate'));
+      if(validated === true) {
+        setValidate(true);
+      }
+    }, [])
     return (
-      <nav className='NavbarItems'>
-        <h1 className='navbar-logo'>Cinta Coding <i className='fab fa-react'></i></h1>
-        <div className='menu-icon' onClick={this.handleClick}>
-          <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
+      <div>
+      {(validate === false) ? (
+        <div>
+        <nav className='NavbarItems'>
+          <h1 className='navbar-logo'><i className='fab fa-react'></i>Cinta Coding</h1>
+          <div className='menu-icon' onClick={handleClick}>
+            <i className={click.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
+          </div>
+          <ul className={click.clicked ? 'nav-menu active' : 'nav-menu'}>
+            
+            {MenuItems.map((item, index) => {
+              return (
+                <li key={index}>
+                  <a className={item.cName} href={item.url}>
+                    {item.title}
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
+        </nav> 
+        <div className='full-background'>
+
         </div>
-        <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
-          {MenuItems.map((item, index) => {
-            return (
-              <li key={index}>
-                <a className={item.cName} href={item.url}>
-                  {item.title}
-                </a>
-              </li>
-            )
-          })}
-        </ul>
-        <Button>Login</Button>
-      </nav>
+      </div> 
+      ) : (
+        <Dashboard />
+      )}
+      </div>
     )
   }
-}
+
+
+
 
 export default Navbar

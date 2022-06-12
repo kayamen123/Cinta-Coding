@@ -1,0 +1,97 @@
+input, button {
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+
+.App-login {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+form{
+  display: block;
+  position: relative;
+}
+
+form::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -100px;
+  bottom: -100px;
+  left: -100px;
+  right: -100px;
+  z-index: 1;
+  background-color: white;
+}
+
+form .form-inner {
+  position:relative;
+  display: block;
+  background-color: white;
+  padding: 100px;
+  z-index: 2;
+}
+
+form .form-inner h2 {
+  color: black;
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+form .form-inner .form-group {
+  display: block;
+  width: 300px;
+  margin-bottom: 25px;
+}
+
+.form-inner .form-group label {
+  display: block;
+  color: #666;
+  font-size: 12px;
+  margin-bottom: 5px;
+  transition: 0.4s;
+}
+
+.form-inner .form-group:focus-within label {
+  color: blue
+}
+
+form .form-inner .form-group input {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #B9BBB6;
+  border-radius: 8px;
+  transition: 0.4s;
+}
+
+form .form-inner .form-group input:focus {
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2); 
+}
+
+form .form-inner input[type="submit"] {
+  display: inline-block;
+  padding: 10px 132px;
+  border-radius: 8px;
+  background-color: blue;
+  background-size: 200%;
+  transition: 0.4s;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+form .form-inner input[type="submit"]:hover {
+  background-color: white;
+  color: blue;
+}
+
