@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import Dashboard from '../Dashboard/Dashboard';
+=======
+import React, { Component } from 'react';
+// import { Button } from '../shared/Button';
+>>>>>>> 0dda9507efd968c89493266038c7b9ebebccf5d7
 import {MenuItems} from "./MenuItems"
 import './Navbar.css'
 
@@ -41,11 +46,26 @@ function Navbar() {
         <div className='full-background'>
 
         </div>
+<<<<<<< HEAD
       </div> 
       ) : (
         <Dashboard />
       )}
       </div>
+=======
+        <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
+          {MenuItems.map((item, index) => {
+            return (
+              <li key={index}>
+                <a className={item.cName} href={item.url}>
+                  {item.title}
+                </a>
+              </li>
+            )
+          })}
+        </ul>
+      </nav>
+>>>>>>> 0dda9507efd968c89493266038c7b9ebebccf5d7
     )
   }
 
