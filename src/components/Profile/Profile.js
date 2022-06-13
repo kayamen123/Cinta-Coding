@@ -33,7 +33,6 @@ function Profile() {
       setUserDetail(response.data)
     })
   }, [url2])
-  console.log(userDetail);
 
   return(
     <div>

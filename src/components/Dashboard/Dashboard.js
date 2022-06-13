@@ -10,6 +10,7 @@ function Dashboard() {
   const [click, setClick] = useState({clicked: false})
   const [user, setUser] = useState([])
   const [post , setPost] = useState([])
+  const [comments , setComments] = useState([])
   const [currentPage, setcurrentPage] = useState(1);
   const [itemsPerPage] = useState(5);
   const [maxPageNumberLimit] = useState(2);
@@ -70,7 +71,13 @@ function Dashboard() {
     axios.get(url).then(response => {
       setPost(response.data)
     })
+    const url2 = `${url}/${1}/comments`
+
+    axios.get(url2).then(res => {
+      setComments(res.data);
+    })
   }, [url])
+
 
   return (
     <div>
@@ -97,7 +104,7 @@ function Dashboard() {
                 <li>
                   <b>{user}</b> {todo.title}
                 </li>
-                  <button><i className='fas fa-comment'></i> 5</button>
+                  <button><i className='fas fa-comment'></i> {(comments.length === undefined) ? "" : comments.length}</button>
                   <button>Detail</button>
               </div>
 
