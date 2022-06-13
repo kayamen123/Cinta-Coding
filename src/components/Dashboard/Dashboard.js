@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Dropdown from '../Dropdown/Dropdown';
 import './Dashboard.css'
 
@@ -15,6 +16,7 @@ function Dashboard() {
   const [itemsPerPage] = useState(5);
   const [maxPageNumberLimit] = useState(2);
   const [minPageNumberLimit] = useState(0);
+  const navigate = useNavigate();
 
   const handlePost = (event) => {
     setcurrentPage(Number(event.target.id))
@@ -54,6 +56,11 @@ function Dashboard() {
       setcurrentPage(1)
     }
   }
+  const handleDetailPost = (index) => {
+    localStorage.setItem('post', JSON.stringify(index));
+    navigate(`/detailPost`)
+  }
+
   const url = 'https://jsonplaceholder.typicode.com/posts'
   const handlePrevPost = () => {
     setcurrentPage(currentPage-1)
@@ -105,7 +112,7 @@ function Dashboard() {
                   <b>{user}</b> {todo.title}
                 </li>
                   <button><i className='fas fa-comment'></i> {(comments.length === undefined) ? "" : comments.length}</button>
-                  <button>Detail</button>
+                  <button onClick={() => {handleDetailPost(index+1)}}>Detail</button>
               </div>
 
           )

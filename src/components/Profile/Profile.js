@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Dropdown from '../Dropdown/Dropdown';
 import './Profile.css'
 
@@ -10,6 +11,7 @@ function Profile() {
   const [click, setClick] = useState({clicked: false})
   const [user, setUser] = useState([])
   const [userDetail , setUserDetail] = useState([])
+  const navigate = useNavigate();
 
   const idUser = JSON.parse(localStorage.getItem('id'));
 
@@ -18,6 +20,9 @@ function Profile() {
   }
   const handleClick2 = () => {
     setClick({clicked: !click.clicked})
+  }
+  const navigateBack = () => {
+    navigate(`/dashboard`)
   }
 
 
@@ -37,6 +42,7 @@ function Profile() {
   return(
     <div>
       <nav className='NavbarItems'>
+        <h1 className='navbar-logo' onClick={navigateBack}><i className='fas fa-arrow-left'></i></h1>
         <h1 className='navbar-logo'><i className='fab fa-react'></i>Cinta Coding</h1>
         <div className='menu-icon' onClick={handleClick}>
           <i className={data.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
