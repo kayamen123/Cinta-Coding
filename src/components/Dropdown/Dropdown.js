@@ -5,17 +5,15 @@ import { useNavigate } from "react-router-dom";
 
 
 
-function Dropdown({User}) {
-  
+function Dropdown({userId}) {
   const navigate = useNavigate();
   function logout()  {
     localStorage.setItem('validate', JSON.stringify(false));
     localStorage.setItem('username', JSON.stringify(""));
-    navigate(`/`)
   }
 
   function profile()  {
-    console.log('profile')
+    navigate(`/profile`);
   }
   return (
     <ul className="dropdown-menu">
@@ -23,9 +21,9 @@ function Dropdown({User}) {
         return (
         <li key={item.id}>
           {(item.id === 2) ? (
-            <label className={item.cName} onClick={logout}>
+            <a className={item.cName} onClick={logout} href="/">
               {item.title}
-            </label>
+            </a>
           ) : (
             <label className={item.cName} onClick={profile}>
               {item.title}

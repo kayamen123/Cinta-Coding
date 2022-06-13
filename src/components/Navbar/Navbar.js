@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import Dashboard from '../Dashboard/Dashboard';
-=======
-import React, { Component } from 'react';
-// import { Button } from '../shared/Button';
->>>>>>> 0dda9507efd968c89493266038c7b9ebebccf5d7
 import {MenuItems} from "./MenuItems"
 import './Navbar.css'
 

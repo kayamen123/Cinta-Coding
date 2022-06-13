@@ -32,7 +32,8 @@ function Login() {
         if(data[i].username === user.password){
           localStorage.setItem('validate', JSON.stringify(true));
           localStorage.setItem('username', JSON.stringify(user.name));
-          navigate(`/dashboard/${data[i].id}`);
+          localStorage.setItem('id', JSON.stringify(data[i].id));
+          navigate(`/dashboard`);
         }
       }
     }
